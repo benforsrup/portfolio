@@ -18,11 +18,11 @@ class BlogIndex extends React.Component {
           title="All posts"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
-        <Bio />
+        <div style={{display:'flex', flexDirection:'row'}}>
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
-            <div key={node.fields.slug}>
+            <div key={node.fields.slug} >
               <h3
                 style={{
                   marginBottom: rhythm(1 / 4),
@@ -32,11 +32,13 @@ class BlogIndex extends React.Component {
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
+              
               <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
             </div>
           )
         })}
+        </div>
+        
       </Layout>
     )
   }
